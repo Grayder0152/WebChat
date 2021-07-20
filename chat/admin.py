@@ -1,3 +1,8 @@
+from .models import ChatMessage
 from django.contrib import admin
 
-# Register your models here.
+
+@admin.register(ChatMessage)
+class ChatUserAdmin(admin.ModelAdmin):
+    list_display = ('author', 'sent_at', 'id')
+

@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>s1.thehost.com.ua :: ISPmanager 4.4 Professional</title>
+<!-- base href="https://s1.thehost.com.ua/manimg/sirius/" -->
+<script language="JavaScript">
+		window.name = "desktop";
+		var hlevel = '5';
+		var imgpath = '/manimg/sirius/';
+		var binary = '/manager/ispmgr';
+		var localdir = 'local/';
+		var startform = '';
+		var pwgenlen = 8;
+		var pwgencharacters = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var pwcheck = "on";
+		var clang = ( String(document.cookie).match(/\w+4=\w+:(\w\w):/) ) ? RegExp.$1 : "en";
+		var msg_back = "<< Назад";var msg_cancel = "Отмена";var msg_chlevel = "Перейти на этот уровень";var msg_close = "Закрыть форму";var msg_confirm = "Пароли не совпадают!";var msg_dashboard = "Переход на Главную страницу";var msg_help = "Открыть документацию";var msg_cpset = "Настройки панели управления";var msg_empty = "Не указано значение %fieldname%";var msg_error = "Ошибка";var msg_error_1 = " Внутренняя ошибка";var msg_error_2 = " уже существует";var msg_error_3 = " не существует";var msg_error_4 = " имеет неверное значение";var msg_error_5 = " лимит превышен";var msg_error_6 = " ошибка доступа";var msg_error_7 = " ошибка лицензии";var msg_error_8 = " ";var msg_error_9 = " ";var msg_finish = "Готово";var msg_logout = "Выход из панели управления";var msg_m0 = "Январь";var msg_m1 = "Февраль";var msg_m10 = "Ноябрь";var msg_m11 = "Декабрь";var msg_m2 = "Март";var msg_m3 = "Апрель";var msg_m4 = "Май";var msg_m5 = "Июнь";var msg_m6 = "Июль";var msg_m7 = "Август";var msg_m8 = "Сентябрь";var msg_m9 = "Октябрь";var msg_maxmin = "Увеличить / Уменьшить ширину поля";var msg_ms0 = "Янв";var msg_ms1 = "Фев";var msg_ms10 = "Ноя";var msg_ms11 = "Дек";var msg_ms2 = "Мар";var msg_ms3 = "Апр";var msg_ms4 = "Май";var msg_ms5 = "Июн";var msg_ms6 = "Июл";var msg_ms7 = "Авг";var msg_ms8 = "Сен";var msg_ms9 = "Окт";var msg_next = "Далее >>";var msg_nosel = "Ничего не выбрано";var msg_ok = "    Ok    ";var msg_pager = "Страницы";var msg_pager_count = "Количество на странице";var msg_passwd = "Пустые пароли недопустимы!";var msg_selected = "Выделено";var msg_today = "Сегодня";var msg_total = "Всего";var msg_w0 = "Пн";var msg_w1 = "Вт";var msg_w2 = "Ср";var msg_w3 = "Чт";var msg_w4 = "Пт";var msg_w5 = "Сб";var msg_w6 = "Вс";var hint_mbarall = "Полное меню";var hint_mbarfavorite = "Избранное";var hint_mbarpopular = "Популярные пункты меню";var hint_mbarshow = "Открыть все вкладки меню";var hint_mbarhide = "Закрыть все вкладки меню";var msg_totalelem = ", ... (ВСЕГО %s элементов)";var msg_badpasswd = "Пароль должен быть длинее 8 символов, содержать хотя бы одну цифру и буквы в нижнем и верхнем регистре.";var msg_obj_ftpuser = "FTP аккаунт";var msg_obj_group = "Пользователь";var msg_obj_homedir = "Домашняя директория";var msg_obj_mailuser = "Почтовый ящик";var msg_obj_shadow = "Пользователь";var msg_obj_user = "Пользователь";var msg_obj_vuser = "Пользователь";var msg_obj_spectask = "Задание планировщика (cron)";var msg_reboot = "Перезагрузка сервера";var msg_restart = "Перезагрузка веб-сервера";var msg_mgrrestart = "Перезагрузка ISPmanager";
+		var mn_help_value; var mn_help_form_value; var mn_newelem;
+	</script><script src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/main.js"></script><script src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/calendar.js"></script><script src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/touchscroll.js"></script><link href="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/main.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="https://s1.thehost.com.ua/manimg/sirius/local/favorite.ico" type="image/x-icon">
+</head>
+<body class="main-body" onresize="mn_resize_window();" onload="mn_init();" style="cursor: default;" topmargin="0" marginwidth="0" marginheight="0" leftmargin="0">
+<iframe id="fka" name="fka" scrolling="no" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/ispmgr_002.html" width="0" height="0" frameborder="0"></iframe><iframe id="tmp" name="tmp" scrolling="no" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/ispmgr_002.html" width="0" height="0" frameborder="0"></iframe><table id="formlayer" class="formlayer" style="visibility: visible;" cellspacing="0" cellpadding="0"><tbody><tr><td class="formlayertd" style="vertical-align: middle;" valign="middle" align="center"><table id="formelem" style="position: static; left: 143px; top: 103px;" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td unselectable="on"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="ft-td1"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/ft-left.png" width="8" height="30"></td>
+<td class="ft-td2" onmousedown="mn_md_ftitle(event)" ondblclick="mn_form_maxmin()"><div id="ftitle" class="ftitle" unselectable="on">Редактировать файл - .htaccess</div></td>
+<td class="ft-td3" style="width:auto;"><img class="f-sysbar-img" onclick="mn_form_reset();" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/fi-clear.png" width="16" height="16"></td>
+<td class="ft-td3"><img class="f-sysbar-img" onclick="mn_show_help(1)" hint="js:top.formframe.hint_default" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/fi-help.png" width="16" height="16"></td>
+<td class="ft-td4"><img id="maxmin" class="f-sysbar-img" onclick="mn_form_maxmin()" hint="Увеличить / Уменьшить ширину поля" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/fi-min.png" width="16" height="16"></td>
+<td class="ft-td5"><img class="f-sysbar-img" onclick="mn_cancel_form()" hint="Закрыть форму" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/fi-close.png" width="16" height="16"></td>
+<td class="ft-td6"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/ft-right.png" width="8" height="30"></td>
+</tr></tbody></table></td></tr>
+<tr><td class="formlayer-table-content"><iframe name="formframe" class="formframe" id="formframe" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/ispmgr_003.html" marginheight="0" marginwidth="0" scrolling="no" width="1177.6000000000001" height="498" frameborder="0"></iframe></td></tr>
+</tbody></table></td>
+<td class="fsh-left" onmousedown="mn_md_fsize(event)" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="1"></td>
+</tr>
+<tr><td colspan="2"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="8"></td>
+<td class="fsh-bottom" width="99%"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="8"></td>
+</tr></tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+<iframe src="javascript:false" style="display: none; position: absolute; z-index: 9; left: 1027px; top: 96px; width: 182px; height: 21px;" class="hintframe" id="hintframe" scrolling="no" frameborder="0"></iframe><div id="hintpane" class="hint" style="visibility: hidden; top: 0px; left: 0px;">Копировать файлы</div>
+<div id="calendar-y" class="cl-ym-y" unselectable="on"></div>
+<div id="calendar-m" class="cl-ym-m" unselectable="on"></div>
+<table id="calendar" class="cl" unselectable="on" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td id="calendar-cell" class="cl-cell" style="border: solid 1px #4D80B6;"></td></tr></tbody></table></td>
+<td class="cl-fsh-left" width="6" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="1"></td>
+</tr>
+<tr><td colspan="2"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="8"></td>
+<td class="cl-fsh-bottom" width="99%"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="6" height="8"></td>
+</tr></tbody></table></td></tr>
+</tbody></table>
+<table id="waitlayer" class="waitlayer" style="visibility: hidden;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td>
+<img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/waiting.gif"><p id="waitlayer-msg"></p>
+</td></tr></tbody></table>
+<table style="height:100%; width:100%;" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td style="width: 190px;" valign="top"><table id="lTbl" style="height: 742px; width: 100%;" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td style="height:88px;"><a href="http://thehost.ua/" target="_blank"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/logo.png" width="190" height="88" border="0"></a></td></tr>
+<tr><td class="menubar" id="menubar" style="border-right-width: 1px;"><table class="menubar-table" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td width="7"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="7" height="1"></td>
+<td id="mbarimgtd-all" class=" mbaron" width="22"><img onclick="mn_switch_menu('all')" hint="Полное меню" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" class="menubar-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/mbar-all.png" width="16" height="16"></td>
+<td id="mbarimgtd-favorite" width="22"><img onclick="mn_switch_menu('favorite')" hint="Избранное" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" class="menubar-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/mbar-favorite.png" width="16" height="16"></td>
+<td id="mbarimgtd-popular" width="22"><img onclick="mn_switch_menu('popular')" hint="Популярные пункты меню" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" class="menubar-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/mbar-popular.png" width="16" height="16"></td>
+<td><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></td>
+<td width="22"><img onclick="mn_expandall_menu('block')" hint="Открыть все вкладки меню" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" class="menubar-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/mbar-showall.png" width="16" height="16"></td>
+<td width="22"><img onclick="mn_expandall_menu('none')" hint="Закрыть все вкладки меню" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()" class="menubar-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/mbar-hideall.png" width="16" height="16"></td>
+</tr></tbody></table></td></tr>
+<tr><td style="height:99%;" valign="top"><div id="menupane" class="menupane" style="height: 627px;"><table class="menupane-table" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td class="menupane-table-menu">
+<script language="javascript">
+		mn_clevel = 5;
+		mn_get_menu_state();
+	 	mn_mnodes.push("main");mn_mnodes.push("www");mn_mnodes.push("mail");mn_mnodes.push("tool");mn_mnodes.push("maintain");mn_mnodes.push("stat");mn_mnodes.push("set");mn_mnodes.push("ext");mn_mnodes.push("mgrhelp");
+		 
+		var lists = {ftp  :"main",domain  :"main",wwwdomain  :"www",wwwredirect  :"www",errpage  :"www",wwwaddtypes  :"www",logs  :"www",diraccess  :"www",cert  :"www",phpextensions  :"www",email  :"mail",emailgroup  :"mail",emailredirect  :"mail",emailresponder  :"mail",emaildomain  :"mail",file  :"tool",db  :"tool",cron  :"tool",webaps  :"tool",backup  :"maintain",backupplan  :"maintain",usagestat  :"stat",diskusage  :"stat",usersystemresources  :"stat",userbandwidth  :"stat",errorjournal  :"stat",httpload  :"stat",iplist  :"set",usermenu  :"set",tutorial  :"mgrhelp"};
+	</script><div id="menu-all" style="display: block;">
+<div class="menu-title" onclick="mn_expand_menu('main');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-main.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Главное</td>
+</tr></tbody></table></div>
+<div id="main-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505058" onclick="mn_load_list('ftp',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=ftp">FTP аккаунты</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243505055" onclick="mn_load_list('domain',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=domain">Доменные имена</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["main"]==0 ){ mn_get_obj("main-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('www');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-www.png" width="16" height="16"></td>
+<td class="menu-title-ch2">World Wide Web</td>
+</tr></tbody></table></div>
+<div id="www-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498886" onclick="mn_load_list('wwwdomain',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwdomain">WWW домены</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498890" onclick="mn_load_list('wwwredirect',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwredirect">Редиректы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505129" onclick="mn_load_list('errpage',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=errpage">Страницы ошибок</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505132" onclick="mn_load_list('wwwaddtypes',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwaddtypes">MIME типы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243501921" onclick="mn_load_list('logs',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=logs">Журнал</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505125" onclick="mn_load_list('diraccess',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=diraccess">Ограничение доступа</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498302" onclick="mn_load_list('cert',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=cert">SSL сертификаты</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498303" onclick="mn_form_show('/manager/ispmgr?func=phpconf',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=phpconf">Настройки PHP</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243504624" onclick="mn_load_list('phpextensions',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=phpextensions">Расширения PHP</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["www"]==0 ){ mn_get_obj("www-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('mail');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-mail.png" width="16" height="16"></td>
+<td class="menu-title-ch2">E-Mail</td>
+</tr></tbody></table></div>
+<div id="mail-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505105" onclick="mn_load_list('email',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=email">Почтовые ящики</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505104" onclick="mn_load_list('emailgroup',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=emailgroup">Почтовые группы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505109" onclick="mn_load_list('emailredirect',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=emailredirect">Почтовые редиректы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243503458" onclick="mn_load_list('emailresponder',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=emailresponder">Почтовые автоответчики</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243503463" onclick="mn_load_list('emaildomain',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=emaildomain">Почтовые домены</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["mail"]==0 ){ mn_get_obj("mail-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('tool');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-tool.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Инструменты</td>
+</tr></tbody></table></div>
+<div id="tool-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1-active"><a id="allid399243498848" onclick="mn_load_list('file',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=file">Менеджер файлов</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498850" onclick="mn_load_list('db',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=db">Базы данных</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243504643" onclick="mn_load_list('cron',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=cron">Планировщик (cron)</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243504647" onclick="mn_load_list('webaps',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=webaps">Web-скрипты (APS)</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243498277" onclick="mn_form_show('/manager/ispmgr?func=mysqldumpupload',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=mysqldumpupload">Импорт дампа MySQL</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["tool"]==0 ){ mn_get_obj("tool-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('maintain');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-maintain.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Обслуживание</td>
+</tr></tbody></table></div>
+<div id="maintain-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509152" onclick="mn_load_list('backup',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=backup">Резервные копии</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509147" onclick="mn_load_list('backupplan',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=backupplan">Настройка резервного копирования</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498759" onclick="mn_form_show('/manager/ispmgr?func=usermove.login',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=usermove.login">Импорт пользователя</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243504586" onclick="mn_form_show('/manager/ispmgr?func=backuponeclick',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=backuponeclick">Сохранить данные</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["maintain"]==0 ){ mn_get_obj("maintain-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('stat');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-stat.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Статистика</td>
+</tr></tbody></table></div>
+<div id="stat-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509292" onclick="mn_load_list('usagestat',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=usagestat">Используемые ресурсы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498753" onclick="mn_load_list('diskusage',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=diskusage">Использование диска</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243498859" onclick="mn_load_list('usersystemresources',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=usersystemresources">Системные ресурсы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509237" onclick="mn_load_list('userbandwidth',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=userbandwidth">Трафик</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505114" onclick="mn_load_list('errorjournal',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=errorjournal">Журнал ошибок</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243504662" onclick="mn_load_list('httpload',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=httpload">Нагрузка http-сервера</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["stat"]==0 ){ mn_get_obj("stat-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('set');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-set.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Настройки</td>
+</tr></tbody></table></div>
+<div id="set-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509309" onclick="mn_load_list('iplist',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=iplist">Список IP-адресов</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243509312" onclick="mn_form_show('/manager/ispmgr?func=wwwdomain.log',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=wwwdomain.log">Ротация логов</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243505075" onclick="mn_load_list('usermenu',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=usermenu">Избранное меню</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243498289" onclick="mn_form_show('/manager/ispmgr?func=usrparam',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startform=usrparam">Настройки панели</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["set"]==0 ){ mn_get_obj("set-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('ext');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-ext.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Доп. приложения</td>
+</tr></tbody></table></div>
+<div id="ext-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243495864" href="https://s1.thehost.com.ua/webmail/" target="_blank">Электронная почта</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243494517" href="https://s1.thehost.com.ua/myadmin/" target="_blank">PhpMyAdmin</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243499164" href="https://s1.thehost.com.ua/pgadmin/" target="_blank">PhpPgAdmin</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["ext"]==0 ){ mn_get_obj("ext-all").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('mgrhelp');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-mgrhelp.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Справка</td>
+</tr></tbody></table></div>
+<div id="mgrhelp-all" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="allid399243497552" href="http://ru.ispdoc.com/index.php/ispmgr-handbook-level5" target="_blank">Вызов справки</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="allid399243496817" onclick="mn_load_list('tutorial',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=tutorial">Обучающее видео</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["mgrhelp"]==0 ){ mn_get_obj("mgrhelp-all").style.display = "none"; }</script>
+</div>
+<div id="menu-favorite" style="display: none;">
+<div class="menu-title" onclick="mn_expand_menu('set');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-set.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Настройки</td>
+</tr></tbody></table></div>
+<div id="set-favorite" class="menu-content"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="favoriteid399243505075" onclick="mn_load_list('usermenu',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=usermenu">Избранное меню</a></td>
+</tr></tbody></table></div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["set"]==0 ){ mn_get_obj("set-favorite").style.display = "none"; }</script>
+</div>
+<div id="menu-popular" style="display: none;">
+<div class="menu-title" onclick="mn_expand_menu('main');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-main.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Главное</td>
+</tr></tbody></table></div>
+<div id="main-popular" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243505058" onclick="mn_load_list('ftp',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=ftp">FTP аккаунты</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243505055" onclick="mn_load_list('domain',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=domain">Доменные имена</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["main"]==0 ){ mn_get_obj("main-popular").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('www');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-www.png" width="16" height="16"></td>
+<td class="menu-title-ch2">World Wide Web</td>
+</tr></tbody></table></div>
+<div id="www-popular" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243498886" onclick="mn_load_list('wwwdomain',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwdomain">WWW домены</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243498890" onclick="mn_load_list('wwwredirect',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwredirect">Редиректы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243505129" onclick="mn_load_list('errpage',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=errpage">Страницы ошибок</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243505132" onclick="mn_load_list('wwwaddtypes',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=wwwaddtypes">MIME типы</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243501921" onclick="mn_load_list('logs',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=logs">Журнал</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243505125" onclick="mn_load_list('diraccess',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=diraccess">Ограничение доступа</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243498302" onclick="mn_load_list('cert',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=cert">SSL сертификаты</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["www"]==0 ){ mn_get_obj("www-popular").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('tool');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-tool.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Инструменты</td>
+</tr></tbody></table></div>
+<div id="tool-popular" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1-active"><a id="popularid399243498848" onclick="mn_load_list('file',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=file">Менеджер файлов</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243498850" onclick="mn_load_list('db',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=db">Базы данных</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["tool"]==0 ){ mn_get_obj("tool-popular").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('maintain');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-maintain.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Обслуживание</td>
+</tr></tbody></table></div>
+<div id="maintain-popular" class="menu-content">
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1">&nbsp;</td>
+<td class="m1"><a id="popularid399243509152" onclick="mn_load_list('backup',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=backup">Резервные копии</a></td>
+</tr></tbody></table>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243509147" onclick="mn_load_list('backupplan',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=backupplan">Настройка резервного копирования</a></td>
+</tr></tbody></table>
+</div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["maintain"]==0 ){ mn_get_obj("maintain-popular").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('stat');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-stat.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Статистика</td>
+</tr></tbody></table></div>
+<div id="stat-popular" class="menu-content"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243505114" onclick="mn_load_list('errorjournal',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=errorjournal">Журнал ошибок</a></td>
+</tr></tbody></table></div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["stat"]==0 ){ mn_get_obj("stat-popular").style.display = "none"; }</script><div class="menu-title" onclick="mn_expand_menu('set');"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="menu-title-ch1" valign="top"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-set.png" width="16" height="16"></td>
+<td class="menu-title-ch2">Настройки</td>
+</tr></tbody></table></div>
+<div id="set-popular" class="menu-content"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="mb1-last">&nbsp;</td>
+<td class="m1"><a id="popularid399243509309" onclick="mn_load_list('iplist',true); return false;" href="https://s1.thehost.com.ua/manager/ispmgr?startpage=iplist">Список IP-адресов</a></td>
+</tr></tbody></table></div>
+<div><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/e.gif" width="1" height="1"></div>
+<script language="javascript">if( mn_smnodes["set"]==0 ){ mn_get_obj("set-popular").style.display = "none"; }</script>
+</div>
+<script language="javascript">
+			var cmbar = "all";
+			var bname = String(binary).replace(/(.*\/)/g,"");
+			if ( String(document.cookie).match( new RegExp( "mbar=[^;]*"+bname+"-"+mn_clevel+"-(\\w+)" ) ) ) { cmbar = RegExp.$1; }
+			mn_switch_menu(cmbar);
+		</script>
+</td></tr>
+<tr><td class="menupane-table-copy"><a href="http://ispsystem.com/" target="blank">ISPsystem © 1997-2021</a></td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></td>
+<td valign="top"><table id="rTbl" style="height: 742px; width: 100%;" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td align="right"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td class="wel-td-1"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/welcome-left.gif" width="5" height="25"></td>
+<td class="wel-td-2"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td><img class="path-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/lv-server.png" width="16" height="16"></td>
+<td>s1.thehost.com.ua ::</td>
+<td><img class="path-img" src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/lv-5.png" width="16" height="16"></td>
+<td><b>meylah152</b></td>
+</tr></tbody></table></td>
+<td class="wel-td-3"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td hint="Настройки панели управления" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/m-set.png" class="sysbar-img" onclick="mn_form_show('/manager/ispmgr?func=usrparam'); return false;" width="16" height="16"></td>
+<td hint="Настройки панели управления" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><a href="" onclick="mn_form_show('/manager/ispmgr?func=usrparam'); return false;">Настройки</a></td>
+<td hint="Открыть документацию" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/sb-help.gif" class="sysbar-img" onclick="mn_show_help(0)" width="16" height="16"></td>
+<td hint="Открыть документацию" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><a href="https://s1.thehost.com.ua/manager/ispmgr?func=help&amp;topic=ftp" onclick="mn_show_help(0); return false;">Помощь</a></td>
+<td hint="Выход из панели управления" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><img src="s1.thehost.com.ua%20ISPmanager%204.4%20Professional_files/sb-logout.gif" class="sysbar-img" onclick="location='/manager/ispmgr?func=logon'" width="16" height="16"></td>
+<td hint="Выход из панели управления" onmouseover="mn_hnt(event)" onmouseout="mn_hintout()"><a href="https://s1.thehost.com.ua/manager/ispmgr?func=logon">Выйти</a></td>
+</tr></tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr style="height: 100%"><td style="height: auto"><iframe name="workarea" id="workarea" src="/manager/ispmgr?func=ftp" scrolling="no" style="height: 100%;" width="100%" height="100%" frameborder="0"></iframe></td></tr>
+</tbody></table></td>
+</tr></tbody></table>
+<span id="sound_span"></span>
+
+
+</body></html>

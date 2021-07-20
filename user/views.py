@@ -8,7 +8,7 @@ from django.views.generic.base import View
 
 class RegistrationUserFormView(FormView):
     form_class = RegistrationUserForm
-    success_url = '/auth/authentication/'
+    success_url = '/auth/login/'
     template_name = 'user/registration.html'
 
     def form_valid(self, form):
