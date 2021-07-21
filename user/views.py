@@ -33,11 +33,16 @@ class LoginUserFormView(FormView):
 
     def form_valid(self, form):
         self.user = form.get_user()
+        self.user.online = True
+        self.user.save()
         login(self.request, self.user)
+
         return super().form_valid(form)
 
 
 class LogoutView(View):
     def get(self, request):
+        request.user.online = False
+        request.user.save()
         logout(request)
         return HttpResponseRedirect("/")

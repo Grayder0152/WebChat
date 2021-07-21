@@ -1,0 +1,96 @@
+body,html{
+	height: 100%;
+	margin: 0;
+	background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+}
+section{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+form{
+	width: max-content;
+	padding: 40px 100px;
+	align-items: center;
+	justify-content: center;	
+}
+
+h1{
+	font-size: 35px;
+	color: #fff;
+	margin-bottom: 40px;
+}
+input{
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid #82ccdd;
+	color: #fff;
+	outline: none;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	padding: 10px;
+}
+input:focus{
+	border-color: #78e08f;
+}
+button.send{
+	background: transparent;
+	border: 2px solid #fff;
+	font-size: 18px;
+	padding: 5px 35px;
+	border-radius: 10px;
+	color: #fff;
+	transition: 0.5s;
+}
+a{
+	text-decoration: underline;
+	color: #82ccdd;
+	transition: 0.5s;
+}
+a:hover{
+	color: #78e08f;
+	text-decoration: none;
+}
+.card{
+	border-radius: 15px !important;
+	border-top: 2px solid #78e08f;
+	border-bottom: 2px solid #78e08f;
+	background-color: rgba(0,0,0,0.4) !important;
+}
+.js-labelFile{
+	max-width: 230px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	color:#82ccdd;
+	border: 2px dashed #82ccdd;
+	border-radius: 15px;
+	cursor: pointer;
+	padding:10px 40px;
+	margin-bottom: 30px;
+	transition: 0.5s;
+}
+.js-labelFile:hover,
+.js-labelFile:focus,
+.has-file,
+button.send:hover{
+	color:#78e08f;
+	border-color:#78e08f
+}
+#id_avatar{
+	width:.1px;
+	height:.1px;
+	opacity:0;
+	overflow:hidden;
+	position:absolute;
+	z-index:-1
+}
+.js-fileName{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}

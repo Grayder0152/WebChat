@@ -5,11 +5,8 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
 
@@ -19,29 +16,27 @@
             <div class="card">
                 <div class="card-header msg_head">
                     <div class="d-flex bd-highlight">
-                        <div class="img_cont">
-                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                 class="rounded-circle user_img">
-                            <span class="online_icon"></span>
-                        </div>
                         <div class="user_info">
                             <span>WebChat</span>
-                            <p><span id='count_messages'>{{ messages_list.count }}</span> Messages</p>
+                            <p><span>{{ chat_users_count }}</span> Users | <span>{{ chat_users_online }}</span> Online | <span id='count_messages'>{{ messages_list|length }}</span> Messages</p>
                         </div>
                     </div>
                     <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                     <div class="action_menu">
                         <ul>
                             <li id='user'><i class="fas fa-user-circle"></i>{{ request.user.username }}</li>
-                            <li><i class="fas fa-users"></i> Add to close friends</li>
-                            <li><i class="fas fa-plus"></i> Add to group</li>
-                            <li><i class="fas fa-ban"></i> Block</li>
+                            <li><a href="{% url 'user_logout' %}" id="logout-button"><i class="fas fa-ban"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card-body msg_card_body" id="chat">
-                    {% for message in messages_list %}
+                    {% if messages_list|length > 30 %}
+                    <div class="d-flex justify-content-center mb-4" id='load-more'>
+                        <button id="load-more-button">Load more</button>
+                    </div>
+                    {% endif %}
+                    {% for message in messages_list|slice:'-30:' %}
                     {% if message.author == request.user %}
                     <div class="d-flex justify-content-end mb-4">
                         <div class="msg_cotainer_send d-flex flex-column">
@@ -54,10 +49,12 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="d-flex justify-content-start mb-4">
+                    <div class="d-flex justify-content-start mb-4" id="{{ message.author.username }}" >
                         <div class="img_cont_msg">
                             <img src="{{ message.author.avatar.url }}"
-                                 class="rounded-circle user_img_msg">
+                                 class="rounded-circle user_img_msg">    
+                            <span class="online_icon {% if message.author.online %}online{% endif %}"></span>
+                            
                         </div>
                         <div class="msg_cotainer d-flex flex-column">
                             <span class="username" style="color:#d23c0d">{{ message.author.username }}</span>
@@ -87,64 +84,13 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-
-        var chat = $('#chat');
-        var chatTextField = $('#chat-message');
-        var chatSendButton = $('#send-message-button');
-        var chatCountMessages = $('#count_messages');
-
-        const chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/chat/'
-        );
-
-        chat.animate({scrollTop: chat.get(0).scrollTopMax}, 500);
-
-        chatTextField.focus();
-        chatTextField.keyup(function(e) {
-            if (e.keyCode === 13) {
-                chatSendButton.click();
-            }
-        });
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            chat.append('<div class="d-flex justify-content-end mb-4">'+
-                                '<div class="msg_cotainer_send d-flex flex-column">'+
-                                    data.message +
-                                    '<span class="msg_time_send">'+ data.sent_at +'</span>'+
-                                '</div>'+
-                                '<div class="img_cont_msg">'+
-                                    '<img src="'+ data.avatar_url +'" class="rounded-circle user_img_msg">'+
-                                '</div>'+
-                            '</div>'
-                            );
-            chatCountMessages.text(data.count_messages+1);
-        };
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        chatSendButton.click(function(e) {
-            if($.trim(chatTextField.val())){
-
-                chatSocket.send(JSON.stringify({
-                    'message': chatTextField.val(),
-                    'username': $('#user').text(),
-                    'count_messages': parseInt(chatCountMessages.text())
-                }));
-            }
-            chatTextField.val('');
-        });
+{% endblock %}
 
 
-        $('#action_menu_btn').click(function(){
-            $('.action_menu').toggle();
-        });
-    });
+{% block script %}
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="{% static 'js/status-socket.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
 
-
-</script>
 {% endblock %}

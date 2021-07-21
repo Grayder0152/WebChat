@@ -19,10 +19,15 @@ class RegistrationUserForm(forms.ModelForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Confirm password'}),
         strip=False,
     )
+    avatar = forms.ImageField(
+        label="Avatar",
+        widget=forms.FileInput(),
+        required=False
+    )
 
     class Meta:
         model = ChatUser
-        fields = ('username', 'password')
+        fields = ('username', 'password', 'avatar')
 
     def clean_password(self):
         password = self.cleaned_data.get("password")

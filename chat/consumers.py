@@ -1,6 +1,7 @@
 from .models import ChatMessage
 from user.models import ChatUser
 
+import datetime
 import json
 
 from channels.generic.websocket import WebsocketConsumer
@@ -37,7 +38,8 @@ class ChatConsumer(WebsocketConsumer):
                 'message': message.message,
                 'sent_at': message.sent_at.strftime('%H:%M'),
                 'avatar_url': message.author.avatar.url,
-                'count_messages': text_data_json['count_messages']
+                'count_messages': text_data_json['count_messages'],
+                'username': text_data_json['username']
             }
         )
 
@@ -47,4 +49,39 @@ class ChatConsumer(WebsocketConsumer):
             'sent_at': event['sent_at'],
             'avatar_url': event['avatar_url'],
             'count_messages': event['count_messages'],
+            'username': event['username']
+        }))
+
+
+class StatusConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'status'
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+        self.accept()
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def receive(self, text_data):
+        text_data_json = json.loads(text_data)
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                'type': 'send_user_status',
+                'online': text_data_json['online'],
+                'username': text_data_json['username']
+            }
+        )
+
+    def send_user_status(self, event):
+        self.send(text_data=json.dumps({
+            'online': event['online'],
+            'username': event['username']
         }))

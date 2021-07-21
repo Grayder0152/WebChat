@@ -29,7 +29,8 @@ class ChatUserManager(BaseUserManager):
 
 class ChatUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True)
-    avatar = models.ImageField(upload_to='avatars/', default='default_avatar.jpg')
+    avatar = models.ImageField(upload_to='avatars/', default='default_avatar.jpg', null=True, blank=True)
+    online = models.BooleanField(default=False)
 
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
