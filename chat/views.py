@@ -3,6 +3,12 @@ from user.models import ChatUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect, JsonResponse
+from django.contrib.auth import logout
+from django.shortcuts import render
+
+
+def handler404(request, exception=None):
+    return render(request, '404.html')
 
 
 def send_message(request):
@@ -36,7 +42,7 @@ class ChatView(LoginRequiredMixin, ListView):
             if not more_message:
                 return JsonResponse({'more_messages': False})
             data_more_message = []
-            for message in list(more_message)[-(count_load_messages+20):-count_load_messages]:
+            for message in list(more_message)[-(count_load_messages + 20):-count_load_messages]:
                 obj = {
                     'message': message.message,
                     'author_username': message.author.username,
@@ -45,4 +51,10 @@ class ChatView(LoginRequiredMixin, ListView):
                 }
                 data_more_message.append(obj)
             return JsonResponse({'more_messages': data_more_message})
+
+        if request.GET.get('close') is not None:
+            request.user.online = False
+            request.user.save()
+            logout(request)
+            return JsonResponse({'close': True})
         return super().get(request, *args, **kwargs)

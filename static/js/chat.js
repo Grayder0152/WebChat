@@ -131,6 +131,22 @@ $(document).ready(function(){
                     }
                 }   
             }
-        })
-    })        
+        });
+    });
+
+});
+
+ $(window).on("beforeunload", function(event) {
+    event.preventDefault();
+    event.returnValue = '';
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        data: {'close': true},
+    });
+});
+
+$('a').on("click", function(event) {
+    $(window).off("beforeunload");
+
 });
