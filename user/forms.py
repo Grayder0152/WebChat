@@ -29,23 +29,6 @@ class RegistrationUserForm(forms.ModelForm):
         model = ChatUser
         fields = ('username', 'password', 'avatar')
 
-    def clean_password(self):
-        password = self.cleaned_data.get("password")
-        if len(password) < 6:
-            raise ValidationError(
-                'Min. 6 characters'
-            )
-        return password
-
-    def clean_password2(self):
-        password = self.cleaned_data.get("password")
-        password2 = self.cleaned_data.get("password2")
-        if password and password2 and password != password2:
-            raise ValidationError(
-                'Passwords not same'
-            )
-        return password2
-
 
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(
@@ -57,4 +40,3 @@ class LoginUserForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Password'}),
     )
-

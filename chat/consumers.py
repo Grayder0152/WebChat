@@ -1,18 +1,16 @@
 from .models import ChatMessage
 from user.models import ChatUser
 
-import datetime
 import json
 
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 
 
-class ChatConsumer(WebsocketConsumer):
+class BaseConsumer(WebsocketConsumer):
+    group_name = None
 
     def connect(self):
-        self.group_name = 'chat'
-
         async_to_sync(self.channel_layer.group_add)(
             self.group_name,
             self.channel_name
@@ -24,6 +22,10 @@ class ChatConsumer(WebsocketConsumer):
             self.group_name,
             self.channel_name
         )
+
+
+class ChatConsumer(BaseConsumer):
+    group_name = 'chat'
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
@@ -53,35 +55,41 @@ class ChatConsumer(WebsocketConsumer):
         }))
 
 
-class StatusConsumer(WebsocketConsumer):
-    def connect(self):
-        self.group_name = 'status'
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-        self.accept()
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-        )
+class StatusConsumer(BaseConsumer):
+    group_name = 'status'
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         async_to_sync(self.channel_layer.group_send)(
             self.group_name,
             {
-                'type': 'send_user_status',
+                'type': 'user_status',
                 'online': text_data_json['online'],
                 'username': text_data_json['username']
             }
         )
 
-    def send_user_status(self, event):
+    def user_status(self, event):
         self.send(text_data=json.dumps({
             'online': event['online'],
             'username': event['username']
+        }))
+
+
+class RegistrationConsumer(BaseConsumer):
+    group_name = 'registration'
+
+    def receive(self, text_data):
+        text_data_json = json.loads(text_data)
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                'type': 'user_registration',
+                'register': text_data_json['register']
+            }
+        )
+
+    def user_registration(self, event):
+        self.send(text_data=json.dumps({
+            'register': event['register']
         }))

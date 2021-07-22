@@ -54,9 +54,6 @@ $(document).ready(function(){
         chat.animate({scrollTop: chat.get(0).scrollTopMax}, 100);
         countLoadMessages += 1
     };
-    chatSocket.onclose = function(e) {
-        console.error('WebSocked closed');
-    }
 
     chatSendButton.click(function(e) {
         if($.trim(chatTextField.val())){
@@ -69,7 +66,19 @@ $(document).ready(function(){
         }
         chatTextField.val('');
     });
-    
+
+
+    const registrationSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/registration/'
+    );
+    registrationSocket.onmessage = function(e){
+        const data = JSON.parse(e.data);
+
+        if(data.register){
+            $('#count_users').text(parseInt($('#count_users').text()) + 1); 
+        }
+    }
+
 
     $('#load-more-button').click(function(){
         let data = {

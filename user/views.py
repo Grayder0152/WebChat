@@ -1,9 +1,16 @@
 from .forms import RegistrationUserForm, LoginUserForm
 from .models import ChatUser
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, logout
-from django.views.generic.base import View
+from django.views.generic import View, DetailView
+
+
+def change_user_data(request):
+    user = request.user
+    user.username = request.POST.get('username', user.username)
+    user.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 class RegistrationUserFormView(FormView):
@@ -17,6 +24,16 @@ class RegistrationUserFormView(FormView):
             password=self.request.POST.get('password')
         )
         return super().form_valid(form)
+
+    def get(self, request, *args, **kwargs):
+        username = request.GET.get('username')
+        if username is not None:
+            data = {'exists': False}
+
+            if ChatUser.objects.filter(username=username):
+                data = {'exists': True}
+            return JsonResponse(data)
+        return super().get(request, *args, **kwargs)
 
 
 class LoginUserFormView(FormView):
@@ -46,3 +63,14 @@ class LogoutView(View):
         request.user.save()
         logout(request)
         return HttpResponseRedirect("/")
+
+
+class ProfileView(DetailView):
+    model = ChatUser
+    template_name = 'user/profile.html'
+    context_object_name = 'user'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.id != kwargs.get('pk'):
+            return HttpResponseRedirect('/')
+        return super().get(request, *args, **kwargs)
