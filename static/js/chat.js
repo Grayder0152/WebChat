@@ -3,17 +3,24 @@ $(document).ready(function(){
         $('.action_menu').toggle();
     });
 
-    var chat = $('#chat');
+    chatSendMessage();
+    registrationListener();
+    statusListenerSender();
+    ajaxLoadMoreMessage();
+
+});
+
+function chatSendMessage(){
+    var $chat = $('#chat');
     var chatTextField = $('#chat-message');
     var chatSendButton = $('#send-message-button');
     var chatUsername = $('#user').text()
-    var countLoadMessages = 30;
 
     const chatSocket = new WebSocket(
         'ws://' + window.location.host + '/ws/chat/'
     );
 
-    chat.animate({scrollTop: chat.get(0).scrollTopMax}, 100);
+    $chat.animate({scrollTop: $chat.get(0).scrollTopMax}, 100);
 
     chatTextField.focus();
     chatTextField.keyup(function(e) {
@@ -26,21 +33,19 @@ $(document).ready(function(){
         const data = JSON.parse(e.data);
 
         if($('#user').text() == data.username){
-            chat.append('<div class="d-flex justify-content-end mb-4">'+
+            $chat.append('<div class="d-flex justify-content-end mb-4">'+
                             '<div class="msg_cotainer_send d-flex flex-column">'+
                                 data.message +
                                 '<span class="msg_time_send">'+ data.sent_at +'</span>'+
                             '</div>'+
-                            '<div class="img_cont_msg">'+
-                                '<img src="'+ data.avatar_url +'" class="rounded-circle user_img_msg">'+
+                            '<div class="img_cont_msg" style="background-image: url('+ data.avatar_url +')">'+
                             '</div>'+
                         '</div>'
                         );
         }
         else{
-            chat.append('<div class="d-flex justify-content-start mb-4" id="'+ data.username +'">'+
-                            '<div class="img_cont_msg">'+
-                                '<img src="'+ data.avatar_url +'" class="rounded-circle user_img_msg">'+
+            $chat.append('<div class="d-flex justify-content-start mb-4" id="'+ data.username +'">'+
+                            '<div class="img_cont_msg" style="background-image: url('+ data.avatar_url +')">'+
                                 '<span class="online_icon online"></span>'+
                             '</div>'+
                             '<div class="msg_cotainer d-flex flex-column">'+
@@ -51,7 +56,7 @@ $(document).ready(function(){
                         '</div>');
         }
         $('#count_messages').text(data.count_messages + 1);
-        chat.animate({scrollTop: chat.get(0).scrollTopMax}, 100);
+        $chat.animate({scrollTop: $chat.get(0).scrollTopMax}, 100);
         countLoadMessages += 1
     };
 
@@ -66,8 +71,9 @@ $(document).ready(function(){
         }
         chatTextField.val('');
     });
+}
 
-
+function registrationListener(){
     const registrationSocket = new WebSocket(
         'ws://' + window.location.host + '/ws/registration/'
     );
@@ -78,9 +84,38 @@ $(document).ready(function(){
             $('#count_users').text(parseInt($('#count_users').text()) + 1); 
         }
     }
+}
+function statusListenerSender(){
+    const statusSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/status/'
+    );
 
+    statusSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        if(data.online){
+            $('#'+data.username+' .online_icon').addClass('online');
+            $('#count_online_users').text(parseInt($('#count_online_users').text()) + 1);
+
+        }
+        else{
+            $('#'+data.username+' .online_icon').removeClass('online');
+            $('#count_online_users').text(parseInt($('#count_online_users').text()) - 1);   
+        }
+    };
+
+    $('#logout-button').click(function(e) {
+        statusSocket.send(JSON.stringify({
+            'online': false,
+            'username': $('#user').text()
+        }));
+    });
+}
+function ajaxLoadMoreMessage(chat){
+    var $chat = $('#chat');
+    var countLoadMessages = 30;
 
     $('#load-more-button').click(function(){
+        $chat.scrollTop(70)
         let data = {
             countLoadMessages:countLoadMessages
         }
@@ -104,15 +139,13 @@ $(document).ready(function(){
                                                 obj['message'] +
                                                 '<span class="msg_time_send">'+ obj['sent_at'] +'</span>'+
                                             '</div>'+
-                                            '<div class="img_cont_msg">'+
-                                                '<img src="'+ obj['author_avatar'] +'" class="rounded-circle user_img_msg">'+
+                                            '<div class="img_cont_msg" style="background-image: url('+ obj['author_avatar'] +')">'+
                                             '</div>'+
                                         '</div>'
                         }
                         else{
                             message +=   '<div class="d-flex justify-content-start mb-4" id="'+ obj['author_username'] +'">'+
-                                            '<div class="img_cont_msg">'+
-                                                '<img src="'+ obj['author_avatar'] +'" class="rounded-circle user_img_msg">'+
+                                            '<div class="img_cont_msg" style="background-image: url('+ obj['author_avatar'] +')">'+
                                                 '<span class="online_icon online"></span>'+
                                             '</div>'+
                                             '<div class="msg_cotainer d-flex flex-column">'+
@@ -123,8 +156,8 @@ $(document).ready(function(){
                                         '</div>'
                         }
                     })
-                    chat.prepend(message);
-                    chat.prepend($loadMore);
+                    $chat.prepend(message);
+                    $chat.prepend($loadMore);
                     countLoadMessages += 20;
                     if(parseInt($('#count_messages').text()) <= countLoadMessages){
                         $('#load-more').remove();
@@ -133,20 +166,18 @@ $(document).ready(function(){
             }
         });
     });
+}
+//  $(window).on("beforeunload", function(event) {
+//     event.preventDefault();
+//     event.returnValue = '';
+//     $.ajax({
+//         method: "GET",
+//         dataType: "json",
+//         data: {'close': true},
+//     });
+// });
 
-});
+// $('a').on("click", function(event) {
+//     $(window).off("beforeunload");
 
- $(window).on("beforeunload", function(event) {
-    event.preventDefault();
-    event.returnValue = '';
-    $.ajax({
-        method: "GET",
-        dataType: "json",
-        data: {'close': true},
-    });
-});
-
-$('a').on("click", function(event) {
-    $(window).off("beforeunload");
-
-});
+// });

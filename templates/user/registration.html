@@ -3,24 +3,28 @@
 
 {% block title %}| Registration{% endblock %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+
 <section>
-    <form action="" method="POST" class="card">
+    <form action="" method="POST" class="card" enctype="multipart/form-data">
         {% csrf_token %}
-        <h1>Registration</h1>
+        <span class="title">Registration</span>
         {{ form.avatar }}
-        <label for="id_avatar" class="js-labelFile">
+        <label for="id_avatar" class="avatar_file_upload">
             <i class="fa fa-download" aria-hidden="true"></i>
-            <span class="js-fileName">Загрузить фото</span>
+            <span class="atatar_label">Загрузить фото</span>
         </label>
         {{ form.username }}
-        <span class="error">Username must be >= 3 characters</span>
-        <span class="error exist">Username already exist</span>
+        <span class="frontend_error">Username must be >= 3 characters</span>
+        <span class="frontend_error exist">Username already exist</span>
         {{ form.password }}
-        <span class="error">Password must be >= 6 characters</span>
+        <span class="frontend_error">Password must be >= 6 characters</span>
         {{ form.password2 }}
-        <span class="error">Passwords not common</span>
+        <span class="frontend_error">Passwords not common</span>
+        <div id="captcha">
+            {{ form.captcha }}
+        </div>
         <button type="submit" class="send">Registration</button>
         <span>or</span>
         <a href="{% url 'user_login' %}">Login</a>
@@ -31,95 +35,5 @@
 
 
 {% block script %}
-
-<script type="text/javascript">
-$(document).ready(function(){    
-    var $label = $('.js-labelFile');
-    var labelVal = $label.html();
-     
-    $('#id_avatar').on('change', function(element) {
-        var fileName = '';
-        if (element.target.value){
-            fileName = element.target.value.split('\\').pop();
-        }
-        if(fileName){
-            $label.addClass('has-file').find('.js-fileName').html(fileName)
-        }
-        else{
-            $label.removeClass('has-file').html(labelVal);
-        }
-    });
-
-    const registrationSocket = new WebSocket(
-        'ws://' + window.location.host + '/ws/registration/'
-    );
-    $('.send').click(function(){
-        registrationSocket.send(JSON.stringify({
-            'register': true,
-        }));
-    });
-
-    function validatMinCountChapters(inputId, min_chapters){
-        $('#'+inputId).on('input', function(){
-            if($(this).val().length < min_chapters){
-                $(this).addClass('invalid').removeClass('valid')
-                $(this).next().show();
-            }
-            else{
-                $(this).removeClass('invalid').addClass('valid');
-                $(this).next().hide();
-            }
-        });
-    }
-
-    $('#id_username').blur(function(){
-        let data = {
-            username: $(this).val()
-        }
-        $.ajax({
-            method: "GET",
-            dataType: "json",
-            data: data,
-            success: function(response){
-                if(response['exists']){
-                    $('#id_username').addClass('invalid').removeClass('valid');
-                    $('.exist').show();
-                }
-                else{
-                    $('#id_username').removeClass('invalid').addClass('valid');
-                    $('.exist').hide();
-                }
-            }
-        });
-    });
-    $('#id_password2').on('input', function(){
-        if($('#id_password2').val() != $('#id_password').val()){
-            $(this).addClass('invalid').removeClass('valid');
-            $(this).next().show();
-        }
-        else{
-            $(this).removeClass('invalid').addClass('valid');
-            $(this).next().hide();
-        }
-    });
-
-    validatMinCountChapters('id_username', 3);
-    validatMinCountChapters('id_password', 6);
-
-    $('form.card').submit(function(event){
-        if($('#id_password2').val() != $('#id_password').val()){
-            $('#id_password2').addClass('invalid').removeClass('valid');
-            $('#id_password2').next().show();
-        }
-
-        if($('.invalid').length > 0){
-            event.preventDefault();
-            $('.invalid')[0].focus();   
-        }
-    });
-
-
-})
-    
-</script>
+<script type="text/javascript" src="{% static 'js/registration.js' %}"></script>
 {% endblock %}

@@ -1,13 +1,12 @@
-import os.path
+import os
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-2*hah9x0j+tv7d_^^sqe-g&oa5-i9ckg79b9=1i=#+755mtmiz'
 DEBUG = True
-
 ALLOWED_HOSTS = ['127.0.0.1']
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,11 +16,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'channels',
+    'captcha',
 
     'user',
     'chat',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -31,9 +30,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'config.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

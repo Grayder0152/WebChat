@@ -1,10 +1,10 @@
-from .models import ChatMessage
-from user.models import ChatUser
-
 import json
 
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
+
+from .models import ChatMessage
+from user.models import ChatUser
 
 
 class BaseConsumer(WebsocketConsumer):

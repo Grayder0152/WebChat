@@ -1,5 +1,7 @@
-from . import views
 from django.urls import path
+
+from . import views
+
 
 urlpatterns = [
     path('registration/', views.RegistrationUserFormView.as_view(), name='user_registration'),

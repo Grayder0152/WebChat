@@ -3,8 +3,8 @@
 {% block title %}| Profile{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
 
 <section>
     <div class="card user_profile">
@@ -14,8 +14,8 @@
         <form method="POST" action="{% url 'change_user_data' %}" id="change-form">
             {% csrf_token %}
             <div>
-                <label for="username">Your username: </label>
-                <input type="text" id="username" value="{{ user.username }}" name='username' disabled>
+                <label for="username">Username: </label>
+                <input type="text" id="username" value="{{ user.username }}" name='username' title="{{ user.username }}" disabled>
             </div>
 
         </form>
@@ -28,7 +28,7 @@
             $('#change-button').click(function(){
                 $('#username').removeAttr('disabled').addClass('active').focus();
                 $(this).remove();
-                $('#change-form').append('<button type="submit" id="save-button">Save</button>');
+                $('#change-form').append('<button type="submit" id="save-button" class="send">Save</button>');
             })
         });
     </script>

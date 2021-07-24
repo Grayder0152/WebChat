@@ -1,21 +1,15 @@
-from .models import ChatMessage
-from user.models import ChatUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
-from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth import logout
 from django.shortcuts import render
+from django.http import JsonResponse
+
+from user.models import ChatUser
+from .models import ChatMessage
 
 
 def handler404(request, exception=None):
     return render(request, '404.html')
-
-
-def send_message(request):
-    if request.method == 'POST':
-        message = ChatMessage(author=request.user, message=request.POST.get('message'))
-        message.save()
-    return HttpResponseRedirect('/')
 
 
 class ChatView(LoginRequiredMixin, ListView):

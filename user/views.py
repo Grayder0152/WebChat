@@ -1,9 +1,12 @@
-from .forms import RegistrationUserForm, LoginUserForm
-from .models import ChatUser
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, logout
 from django.views.generic import View, DetailView
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
+
+from .forms import RegistrationUserForm, LoginUserForm
+from .models import ChatUser
 
 
 def change_user_data(request):
@@ -19,17 +22,13 @@ class RegistrationUserFormView(FormView):
     template_name = 'user/registration.html'
 
     def form_valid(self, form):
-        ChatUser.objects.create_user(
-            username=self.request.POST.get('username'),
-            password=self.request.POST.get('password')
-        )
+        form.save()
         return super().form_valid(form)
 
     def get(self, request, *args, **kwargs):
         username = request.GET.get('username')
         if username is not None:
             data = {'exists': False}
-
             if ChatUser.objects.filter(username=username):
                 data = {'exists': True}
             return JsonResponse(data)
@@ -46,6 +45,8 @@ class LoginUserFormView(FormView):
         if form.is_valid():
             return self.form_valid(form)
         else:
+            if form.errors.get('__all__', None) is not None:
+                form.errors['__all__'] = ErrorList([ValidationError('Invalid username or password')])
             return self.form_invalid(form)
 
     def form_valid(self, form):
