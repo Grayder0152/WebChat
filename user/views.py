@@ -2,11 +2,10 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, logout
 from django.views.generic import View, DetailView
-from django.core.exceptions import ValidationError
-from django.forms.utils import ErrorList
 
 from .forms import RegistrationUserForm, LoginUserForm
 from .models import ChatUser
+from .services import change_error_message
 
 
 def change_user_data(request):
@@ -16,12 +15,22 @@ def change_user_data(request):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def user_status(request):
+    data = {'data': request.POST}
+    form = LoginUserForm(**data)
+    if form.is_valid():
+        return JsonResponse({'login': True})
+    else:
+        return JsonResponse({'login': False})
+
+
 class RegistrationUserFormView(FormView):
     form_class = RegistrationUserForm
     success_url = '/auth/login/'
     template_name = 'user/registration.html'
 
     def form_valid(self, form):
+        form.instance.set_password(self.request.POST['password'])
         form.save()
         return super().form_valid(form)
 
@@ -45,8 +54,9 @@ class LoginUserFormView(FormView):
         if form.is_valid():
             return self.form_valid(form)
         else:
-            if form.errors.get('__all__', None) is not None:
-                form.errors['__all__'] = ErrorList([ValidationError('Invalid username or password')])
+            change_error_message(form, '__all__', 'Invalid username or password')
+            change_error_message(form, 'username', 'Username field is required.')
+            change_error_message(form, 'password', 'Password field is required.')
             return self.form_invalid(form)
 
     def form_valid(self, form):
@@ -54,7 +64,6 @@ class LoginUserFormView(FormView):
         self.user.online = True
         self.user.save()
         login(self.request, self.user)
-
         return super().form_valid(form)
 
 

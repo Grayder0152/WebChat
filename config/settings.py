@@ -89,6 +89,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.ChatUser'
 
 ASGI_APPLICATION = "config.asgi.application"
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -97,3 +98,4 @@ CHANNEL_LAYERS = {
         },
     },
 }
+

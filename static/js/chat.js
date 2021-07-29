@@ -8,7 +8,18 @@ $(document).ready(function(){
     statusListenerSender();
     ajaxLoadMoreMessage();
 
+    $(window).on("beforeunload blur", function() {
+        logout = setTimeout(function(){
+            $('#logout-button').click();
+            $.get('/auth/logout/');
+            setTimeout(function(){window.location.reload()},500);
+        }, 300000)
+        $(window).on("load focus", function() {
+            clearTimeout(logout);
+        });
+    });
 });
+var countLoadMessages = 30;
 
 function chatSendMessage(){
     var $chat = $('#chat');
@@ -93,13 +104,14 @@ function statusListenerSender(){
     statusSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
         if(data.online){
+            console.log(222);
             $('#'+data.username+' .online_icon').addClass('online');
-            $('#count_online_users').text(parseInt($('#count_online_users').text()) + 1);
-
+            $('#count_online_users').text(parseInt($('#count_online_users').text()) + 1); 
         }
         else{
+            console.log(333);
             $('#'+data.username+' .online_icon').removeClass('online');
-            $('#count_online_users').text(parseInt($('#count_online_users').text()) - 1);   
+            $('#count_online_users').text(parseInt($('#count_online_users').text()) - 1); 
         }
     };
 
@@ -112,7 +124,6 @@ function statusListenerSender(){
 }
 function ajaxLoadMoreMessage(chat){
     var $chat = $('#chat');
-    var countLoadMessages = 30;
 
     $('#load-more-button').click(function(){
         $chat.scrollTop(70)
@@ -167,17 +178,4 @@ function ajaxLoadMoreMessage(chat){
         });
     });
 }
-//  $(window).on("beforeunload", function(event) {
-//     event.preventDefault();
-//     event.returnValue = '';
-//     $.ajax({
-//         method: "GET",
-//         dataType: "json",
-//         data: {'close': true},
-//     });
-// });
 
-// $('a').on("click", function(event) {
-//     $(window).off("beforeunload");
-
-// });

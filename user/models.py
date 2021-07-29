@@ -6,10 +6,10 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 class ChatUserManager(BaseUserManager):
     use_in_migrations = True
 
-    def create_user(self, username, password, avatar):
+    def create_user(self, username, password):
         if not username:
             raise ValueError('The given username must be set')
-        user = self.model(username=username, password=password, avatar=avatar)
+        user = self.model(username=username, password=password)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -44,7 +44,3 @@ class ChatUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.username
-
-    def save(self, *args, **kwargs):
-        self.set_password(self.password)
-        super().save(*args, **kwargs)

@@ -14,9 +14,6 @@
         {% endfor %}
         {{ form.username }}
         {{ form.password }}
-        <div id="captcha">
-        {{ form.captcha }}
-        </div>
         <button type="submit" id="login-button" class="send">Login</button>
         <span>or</span>
         <a href="{% url 'user_registration' %}">Registration</a>

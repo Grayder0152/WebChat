@@ -65,14 +65,14 @@ class StatusConsumer(BaseConsumer):
             {
                 'type': 'user_status',
                 'online': text_data_json['online'],
-                'username': text_data_json['username']
+                'username': text_data_json['username'],
             }
         )
 
     def user_status(self, event):
         self.send(text_data=json.dumps({
             'online': event['online'],
-            'username': event['username']
+            'username': event['username'],
         }))
 
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
-from django.contrib.auth import logout
+# from django.contrib.auth import logout
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -46,9 +46,9 @@ class ChatView(LoginRequiredMixin, ListView):
                 data_more_message.append(obj)
             return JsonResponse({'more_messages': data_more_message})
 
-        if request.GET.get('close') is not None:
-            request.user.online = False
-            request.user.save()
-            logout(request)
-            return JsonResponse({'close': True})
+        # if request.GET.get('close') is not None:
+        #     request.user.online = False
+        #     request.user.save()
+        #     logout(request)
+        #     return JsonResponse({'close': True})
         return super().get(request, *args, **kwargs)

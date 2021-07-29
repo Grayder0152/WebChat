@@ -10,6 +10,9 @@
     <form action="" method="POST" class="card" enctype="multipart/form-data">
         {% csrf_token %}
         <span class="title">Registration</span>
+        {% for error, text in  form.errors.items %}
+            <span class="backend_error">{{text.as_text}}</span>
+        {% endfor %}
         {{ form.avatar }}
         <label for="id_avatar" class="avatar_file_upload">
             <i class="fa fa-download" aria-hidden="true"></i>

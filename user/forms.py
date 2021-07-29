@@ -66,6 +66,3 @@ class LoginUserForm(AuthenticationForm):
             }
         ),
     )
-    captcha = CaptchaField(
-        widget=CaptchaTextInput(attrs={'placeholder': 'Captcha'})
-    )

@@ -9,9 +9,22 @@ function statusSender(){
     );
 
     $('#login-button').click(function(e) {
-        statusSocket.send(JSON.stringify({
-            'online': true,
-            'username': $('#id_username').val()
-        }));
+        e.preventDefault();
+        let form = $('form');
+        let formData = form.serialize();
+        $.ajax({
+            method: 'POST',
+            url: '/auth/user-status/',
+            data: formData,
+            success: function (response) {
+                if(response['login']){
+                    statusSocket.send(JSON.stringify({
+                        'online': true,
+                        'username': $('#id_username').val()
+                    }));
+                }
+                form.submit();
+            }
+        });
     });
 }
