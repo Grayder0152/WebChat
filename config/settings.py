@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-2*hah9x0j+tv7d_^^sqe-g&oa5-i9ckg79b9=1i=#+755mtmiz'
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'psycopg2',
     'channels',
     'captcha',
 
@@ -55,7 +56,7 @@ DATABASES = {
         'NAME': 'chat_db',
         'USER': 'chat_admin',
         'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'HOST': 'postgresdb',
         'PORT': '',
     }
 }
@@ -83,8 +84,12 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_DIRS = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIRS]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -98,7 +103,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('redis', 6379)],
         },
     },
 }
