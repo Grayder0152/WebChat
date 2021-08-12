@@ -1,4 +1,4 @@
 * linguist-vendored
 *.py linguist-vendored=false
-*.min.js linguist-vendored=true
+jquery.js -linguist-vendored
 *.js linguist-vendored=false
